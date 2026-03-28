@@ -47,7 +47,7 @@ proc httpClientNewImpl*(interp: var Interpreter, self: Instance,
 
 proc parseHeaders(headerStr: string): HttpHeaders =
   ## Parse headers from string format "Key: Value\nKey2: Value2"
-  result = newHttpHeaders()
+  result = emptyHttpHeaders()
   if headerStr.len == 0:
     return result
   
@@ -78,7 +78,7 @@ proc httpClientGetImpl*(interp: var Interpreter, self: Instance,
     return nilValue()
 
   let url = args[0].toString()
-  var headers = newHttpHeaders()
+  var headers = emptyHttpHeaders()
   
   # Optional headers argument
   if args.len >= 2:
@@ -108,7 +108,7 @@ proc httpClientPostImpl*(interp: var Interpreter, self: Instance,
 
   let url = args[0].toString()
   let body = args[1].toString()
-  var headers = newHttpHeaders()
+  var headers = emptyHttpHeaders()
   
   # Optional headers argument
   if args.len >= 3:
@@ -138,7 +138,7 @@ proc httpClientPutImpl*(interp: var Interpreter, self: Instance,
 
   let url = args[0].toString()
   let body = args[1].toString()
-  var headers = newHttpHeaders()
+  var headers = emptyHttpHeaders()
   
   # Optional headers argument
   if args.len >= 3:
@@ -167,7 +167,7 @@ proc httpClientDeleteImpl*(interp: var Interpreter, self: Instance,
     return nilValue()
 
   let url = args[0].toString()
-  var headers = newHttpHeaders()
+  var headers = emptyHttpHeaders()
   
   # Optional headers argument
   if args.len >= 2:
@@ -197,7 +197,7 @@ proc httpClientPatchImpl*(interp: var Interpreter, self: Instance,
 
   let url = args[0].toString()
   let body = args[1].toString()
-  var headers = newHttpHeaders()
+  var headers = emptyHttpHeaders()
   
   # Optional headers argument
   if args.len >= 3:

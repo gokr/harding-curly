@@ -3,6 +3,7 @@
 ## Native implementation for HttpResponse class
 ## ============================================================================
 
+import std/tables
 import harding/core/types
 import harding/interpreter/objects
 

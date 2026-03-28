@@ -1,9 +1,14 @@
 {
   "name": "curly",
   "version": "0.1.0",
+  "installedAt": "2026-03-28T22:24:02Z",
+  "source": "https://github.com/gokr/harding-curly.git",
+  "commit": "888adb746d7682fe95db5328020d8e190b740f58",
   "description": "Curly HTTP Client wrapper for Harding",
   "author": "Göran Krampe",
-  "license": "MIT",
-  "bootstrapPath": "lib/curly/Bootstrap.hrd",
-  "compileFlag": "harding_curly"
+  "requires": [
+    "nim >= 2.0.0",
+    "curly >= 1.1.0",
+    "jsony"
+  ]
 }

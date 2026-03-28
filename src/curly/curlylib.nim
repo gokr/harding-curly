@@ -9,13 +9,13 @@ import harding/interpreter/objects
 import harding/interpreter/vm
 import harding/packages/package_api
 
-import ./curly/httpclient
-import ./curly/httpresponse
+import ./httpclient
+import ./httpresponse
 
 const
-  BootstrapHrd = staticRead("../lib/curly/Bootstrap.hrd")
-  HttpClientHrd = staticRead("../lib/curly/HttpClient.hrd")
-  HttpResponseHrd = staticRead("../lib/curly/HttpResponse.hrd")
+  BootstrapHrd = staticRead("../../lib/curly/Bootstrap.hrd")
+  HttpClientHrd = staticRead("../../lib/curly/HttpClient.hrd")
+  HttpResponseHrd = staticRead("../../lib/curly/HttpResponse.hrd")
 
 ## ============================================================================
 ## Primitive Registration
