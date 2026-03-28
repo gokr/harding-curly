@@ -1,0 +1,22 @@
+#!/usr/bin/env harding
+#
+# Curly HTTP Client class
+# Provides HTTP client functionality via the Curly library
+#
+
+HttpClient := Object derive: #()
+
+# Class methods
+HttpClient class>>new <primitive primitiveHttpClientNew>
+
+HttpClient class>>default [
+    ^ self new
+]
+
+# Instance methods
+HttpClient>>get: url <primitive primitiveHttpClientGet: url>
+HttpClient>>post: url body: body <primitive primitiveHttpClientPost: url body: body>
+HttpClient>>put: url body: body <primitive primitiveHttpClientPut: url body: body>
+HttpClient>>delete: url <primitive primitiveHttpClientDelete: url>
+HttpClient>>patch: url body: body <primitive primitiveHttpClientPatch: url body: body>
+HttpClient>>close <primitive primitiveHttpClientClose>

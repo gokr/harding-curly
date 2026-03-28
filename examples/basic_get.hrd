@@ -1,0 +1,16 @@
+#!/usr/bin/env harding
+#
+# Basic HTTP GET example using harding-curly
+#
+
+Harding load: "lib/curly/Bootstrap.hrd".
+
+# Create a client and make a request
+client := HttpClient new.
+response := client get: "https://httpbin.org/get".
+
+"Status Code: " print. response statusCode printString print.
+"Response Body:" print. 
+response body print.
+
+client close

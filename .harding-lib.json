@@ -1,0 +1,9 @@
+{
+  "name": "curly",
+  "version": "0.1.0",
+  "description": "Curly HTTP Client wrapper for Harding",
+  "author": "Göran Krampe",
+  "license": "MIT",
+  "bootstrapPath": "lib/curly/Bootstrap.hrd",
+  "compileFlag": "harding_curly"
+}

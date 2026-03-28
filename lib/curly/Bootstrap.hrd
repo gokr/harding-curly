@@ -1,0 +1,7 @@
+#!/usr/bin/env harding
+#
+# Curly HTTP Client Bootstrap - Loads HTTP Client classes
+#
+
+Harding load: "lib/curly/HttpClient.hrd".
+Harding load: "lib/curly/HttpResponse.hrd".
