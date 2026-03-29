@@ -169,6 +169,31 @@ proc registerHttpResponsePrimitives(interp: var Interpreter) =
   responseCls.classMethods["new"] = publicNewMethod
   responseCls.allClassMethods["new"] = publicNewMethod
 
+  # Register accessor primitives
+  let statusCodeMethod = createCoreMethod("statusCode")
+  statusCodeMethod.setNativeImpl(httpResponseStatusCodeImpl)
+  statusCodeMethod.hasInterpreterParam = true
+  responseCls.methods["statusCode"] = statusCodeMethod
+  responseCls.allMethods["statusCode"] = statusCodeMethod
+
+  let headersMethod = createCoreMethod("headers")
+  headersMethod.setNativeImpl(httpResponseHeadersImpl)
+  headersMethod.hasInterpreterParam = true
+  responseCls.methods["headers"] = headersMethod
+  responseCls.allMethods["headers"] = headersMethod
+
+  let bodyMethod = createCoreMethod("body")
+  bodyMethod.setNativeImpl(httpResponseBodyImpl)
+  bodyMethod.hasInterpreterParam = true
+  responseCls.methods["body"] = bodyMethod
+  responseCls.allMethods["body"] = bodyMethod
+
+  let urlMethod = createCoreMethod("url")
+  urlMethod.setNativeImpl(httpResponseUrlImpl)
+  urlMethod.hasInterpreterParam = true
+  responseCls.methods["url"] = urlMethod
+  responseCls.allMethods["url"] = urlMethod
+
   debug("Registered HttpResponse primitives")
   
   # Force rebuild of method tables

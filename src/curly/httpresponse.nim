@@ -25,7 +25,7 @@ proc createHttpResponse*(interp: var Interpreter, statusCode: int, headers: stri
   let responseCls = responseClsVal.classVal
   let instance = newInstance(responseCls)
 
-  # Store response data
+  # Store response data in nimValue for Nim proxy access
   var responseData = HttpResponseData(
     statusCode: statusCode,
     headers: headers,
@@ -39,6 +39,59 @@ proc createHttpResponse*(interp: var Interpreter, statusCode: int, headers: stri
   instance.isNimProxy = true
 
   return instance.toValue()
+
+# Primitive accessors for response data
+proc httpResponseStatusCodeImpl*(interp: var Interpreter, self: Instance,
+                                 args: seq[NodeValue]): NodeValue {.nimcall.} =
+  ## Get the HTTP status code
+  ## response statusCode
+  discard interp
+  discard args
+  
+  if not self.isNimProxy or self.nimValue == nil:
+    return nilValue()
+  
+  let dataPtr = cast[ptr HttpResponseData](self.nimValue)
+  return dataPtr.statusCode.toValue()
+
+proc httpResponseHeadersImpl*(interp: var Interpreter, self: Instance,
+                              args: seq[NodeValue]): NodeValue {.nimcall.} =
+  ## Get the response headers
+  ## response headers
+  discard interp
+  discard args
+  
+  if not self.isNimProxy or self.nimValue == nil:
+    return nilValue()
+  
+  let dataPtr = cast[ptr HttpResponseData](self.nimValue)
+  return dataPtr.headers.toValue()
+
+proc httpResponseBodyImpl*(interp: var Interpreter, self: Instance,
+                           args: seq[NodeValue]): NodeValue {.nimcall.} =
+  ## Get the response body
+  ## response body
+  discard interp
+  discard args
+  
+  if not self.isNimProxy or self.nimValue == nil:
+    return nilValue()
+  
+  let dataPtr = cast[ptr HttpResponseData](self.nimValue)
+  return dataPtr.body.toValue()
+
+proc httpResponseUrlImpl*(interp: var Interpreter, self: Instance,
+                          args: seq[NodeValue]): NodeValue {.nimcall.} =
+  ## Get the request URL
+  ## response url
+  discard interp
+  discard args
+  
+  if not self.isNimProxy or self.nimValue == nil:
+    return nilValue()
+  
+  let dataPtr = cast[ptr HttpResponseData](self.nimValue)
+  return dataPtr.url.toValue()
 
 proc httpResponseNewImpl*(interp: var Interpreter, self: Instance,
                           args: seq[NodeValue]): NodeValue {.nimcall.} =
